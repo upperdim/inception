@@ -1,0 +1,12 @@
+services:
+
+  nginx:
+    
+
+  wordpress:
+    
+
+  mariadb:
+
+volumes:
+  mysite-data:
