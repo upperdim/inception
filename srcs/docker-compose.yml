@@ -1,12 +1,25 @@
 services:
 
   nginx:
-    
+    image: inception-nginx
+    container-name: inception-nginx
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
 
   wordpress:
-    
+  	image: inception-wordpress
+    container-name: inception-wordpress
+    build:
+      context: ./wordpress
+      dockerfile: Dockerfile
 
   mariadb:
-
+  	image: inception-mariadb
+    container-name: inception-mariadb
+    build:
+      context: ./mariadb
+      dockerfile: Dockerfile
+    
 volumes:
-  mysite-data:
+  mysite-vol:
