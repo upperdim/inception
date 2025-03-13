@@ -4,21 +4,21 @@ services:
 
   nginx:
     image: inception-nginx
-    container-name: inception-nginx
+    container_name: inception-nginx
     build:
       context: ./nginx
       dockerfile: Dockerfile
 
   wordpress:
-  	image: inception-wordpress
-    container-name: inception-wordpress
+    image: inception-wordpress
+    container_name: inception-wordpress
     build:
       context: ./wordpress
       dockerfile: Dockerfile
 
   mariadb:
-  	image: inception-mariadb
-    container-name: inception-mariadb
+    image: inception-mariadb
+    container_name: inception-mariadb
     build:
       context: ./mariadb
       dockerfile: Dockerfile
