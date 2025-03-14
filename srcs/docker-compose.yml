@@ -38,5 +38,8 @@ services:
     build:
       context: ./requirements/mariadb
       dockerfile: Dockerfile
-    
+    environment:
+      MARIADB_DB: ${MARIADB_DB}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PW: ${MARIADB_PW}
 
