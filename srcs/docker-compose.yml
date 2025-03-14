@@ -1,5 +1,15 @@
 # Inception docker-compose.yml
 
+volumes:
+  wordpress-vol:
+    name: wordpress-vol
+    driver: local
+    driver_opts:
+      device: $HOME/data/wordpress-vol
+      o: bind     # Bind type volume
+      type: none  # Don't assume filesystem type
+
+
 services:
 
   nginx:
@@ -10,6 +20,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "80:80"
+    volumes:
+      - wordpress-vol:/var/www/html
 
   wordpress:
     image: inception-wordpress
@@ -17,6 +29,8 @@ services:
     build:
       context: ./requirements/wordpress
       dockerfile: Dockerfile
+    volumes:
+      - wordpress-vol:/var/www/html
 
   mariadb:
     image: inception-mariadb
@@ -25,6 +39,4 @@ services:
       context: ./requirements/mariadb
       dockerfile: Dockerfile
     
-volumes:
-  mysite-vol:
 
