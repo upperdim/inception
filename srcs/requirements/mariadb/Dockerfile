@@ -6,7 +6,7 @@ RUN apt update && apt upgrade -y && apt install -y mariadb-server
 
 # Copy configuration file with user set,
 # datadir and tmpdir uncommented, bind-address and init-file set
-COPY 50-server.cnf /etc/mysql/mariadb.d
+COPY 50-server.cnf /etc/mysql/mariadb.d/
 
 # Copy the script that creates mariadb databases
 COPY init_mariadb.sql /etc/mysql/init_mariadb.sql
