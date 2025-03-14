@@ -22,6 +22,9 @@ services:
       - "80:80"
     volumes:
       - wordpress-vol:/var/www/html
+    depends_on:
+      - wordpress
+      - mariadb
 
   wordpress:
     image: inception-wordpress
@@ -31,6 +34,10 @@ services:
       dockerfile: Dockerfile
     volumes:
       - wordpress-vol:/var/www/html
+    depends_on:
+      - mariadb
+    env_file:
+    - .env
 
   mariadb:
     image: inception-mariadb
@@ -38,8 +45,7 @@ services:
     build:
       context: ./requirements/mariadb
       dockerfile: Dockerfile
-    environment:
-      MARIADB_DB: ${MARIADB_DB}
-      MARIADB_USER: ${MARIADB_USER}
-      MARIADB_PW: ${MARIADB_PW}
+    env_file:
+      - .env
+
 
