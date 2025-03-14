@@ -4,6 +4,9 @@ FROM debian:bullseye
 
 RUN apt update && apt upgrade -y && apt install -y php-fpm
 
+# Create the directory expected by php-fpm, otherwise we get PID error
+RUN mkdir -p /run/php
+
 # Below is a default php-fpm config file with FastCGI listening address
 # changed to 127.0.0.1:9000 instead of /run/php/php7.4-fpm.sock
 COPY www.conf /etc/php/7.4/fpm/pool.d
