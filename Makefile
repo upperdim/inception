@@ -15,3 +15,6 @@ start: create_dirs
 stop:
 	docker compose -f $(COMPOSE_FILE) stop
 
+ps:
+	docker ps -a
+
