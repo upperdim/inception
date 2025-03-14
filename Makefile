@@ -21,3 +21,6 @@ stop:
 ps:
 	docker ps -a
 
+prune:
+	docker container prune
+
