@@ -11,6 +11,7 @@ mysqld_safe &
 MYSQL_PID=$!
 
 echo "Waiting for MySQL to be ready..."
+# Runs until value is 0, ping returns 0 if server is up
 until mysqladmin ping --silent; do
     sleep 1
 done
