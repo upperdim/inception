@@ -8,6 +8,13 @@ volumes:
       device: $HOME/data/wordpressvol
       o: bind     # Bind type volume
       type: none  # Don't assume filesystem type
+  mariadbvol:
+    name: mariadbvol
+    driver: local
+    driver_opts:
+      device: $HOME/data/mariadbvol
+      o: bind
+      type: none
 
 networks:
   inception:
@@ -56,6 +63,8 @@ services:
     build:
       context: ./requirements/mariadb
       dockerfile: Dockerfile
+    volumes:
+      - mariadbvol:/var/lib/mysql
     env_file:
       - .env
     networks:

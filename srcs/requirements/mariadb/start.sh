@@ -19,6 +19,9 @@ echo "Creating database..."
 mysql -uroot -ppass < "$INIT_FILE"
 echo "Database created."
 
+# Mount db into its own volume
+mysql_install_db
+
 # Keep the daemon running
 wait "$MYSQL_PID"
 

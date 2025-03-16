@@ -1,7 +1,9 @@
 COMPOSE_FILE := ./srcs/docker-compose.yml
 
+all: up
+
 create_dirs:
-	mkdir -p ~/data ~/data/wordpressvol
+	mkdir -p ~/data ~/data/wordpressvol ~/data/mariadbvol
 
 up: create_dirs
 	docker compose -f $(COMPOSE_FILE) up --build
