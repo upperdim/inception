@@ -20,11 +20,22 @@ else
 fi
 
 
+echo "Waiting for MySQL to be ready..."
+until mysqladmin ping -h mariadb -uroot -ppass --silent; do
+    sleep 2
+done
+
+#echo "Waiting for MariaDB to be ready..."
+#until mysqladmin ping -h "${MYSQL_DB_HOST}" -u root --password="${MYSQL_ROOT_PASSWORD}" --silent; do
+#    sleep 1
+#done
+
+
 echo "Wordpress: Creating config..."
 ./wp-cli.phar config create	--dbname="$MARIADB_DB" \
 							--dbuser="$MARIADB_USER" \
 							--dbpass="$MARIADB_PW" \
-							--dbhost=mariadb \
+							--dbhost="mariadb" \
 							--allow-root
 
 
