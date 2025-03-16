@@ -7,11 +7,11 @@ sed -i "s/\${MARIADB_USER}/${MARIADB_USER}/g" "$INIT_FILE"
 sed -i "s/\${MARIADB_PW}/${MARIADB_PW}/g" "$INIT_FILE"
 
 echo "Starting MySQL daemon..."
-mysqld &
+mysqld_safe &
 MYSQL_PID=$!
 
 echo "Waiting for MySQL to be ready..."
-until mysqladmin ping; do
+until mysqladmin ping --silent; do
     sleep 1
 done
 
