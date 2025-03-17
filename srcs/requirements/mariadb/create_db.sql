@@ -11,6 +11,13 @@ CREATE USER IF NOT EXISTS '${MARIADB_USER}'@'%' IDENTIFIED BY '${MARIADB_PW}';
 --------------------------------------------------------------------------------
 GRANT ALL PRIVILEGES ON ${MARIADB_DB}.* TO '${MARIADB_USER}'@'%' WITH GRANT OPTION;
 
+
+--------------------------------------------------------------------------------
+-- Change root password
+--------------------------------------------------------------------------------
+ALTER USER 'root'@'localhost' IDENTIFIED VIA mysql_native_password USING PASSWORD('${MARIADB_ROOT_PW}');
+
+
 --------------------------------------------------------------------------------
 -- Force database server to reload privilege table so changes take effect
 --------------------------------------------------------------------------------

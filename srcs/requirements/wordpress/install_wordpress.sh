@@ -50,7 +50,7 @@ echo "Wordpress: Installing..."
 echo "Wordpress: Creating test user..."
 ./wp-cli.phar user create	"$WORDPRESS_TEST_USER" \
 							"$WORDPRESS_TEST_EMAIL" \
-							--role=author \
+							--role=subscriber \
 							--user_pass="$WORDPRESS_TEST_PW" \
 							--allow-root
 

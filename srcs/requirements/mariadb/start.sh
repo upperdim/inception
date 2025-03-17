@@ -5,6 +5,7 @@ INIT_FILE="/create_db.sql"
 sed -i "s/\${MARIADB_DB}/${MARIADB_DB}/g" "$INIT_FILE"
 sed -i "s/\${MARIADB_USER}/${MARIADB_USER}/g" "$INIT_FILE"
 sed -i "s/\${MARIADB_PW}/${MARIADB_PW}/g" "$INIT_FILE"
+sed -i "s/\${MARIADB_ROOT_PW}/${MARIADB_ROOT_PW}/g" "$INIT_FILE"
 
 echo "Starting MySQL daemon..."
 mysqld_safe &
