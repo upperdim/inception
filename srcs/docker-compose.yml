@@ -29,7 +29,7 @@ services:
       context: ./requirements/nginx
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - "443:443"
     volumes:
       - wordpressvol:/var/www/html
     depends_on:
@@ -52,7 +52,7 @@ services:
     depends_on:
       - mariadb
     env_file:
-    - .env
+      - .env
     networks:
       - inception
     restart: always

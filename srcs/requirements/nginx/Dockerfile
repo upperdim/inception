@@ -8,6 +8,13 @@ RUN apt update && apt upgrade -y && apt install -y nginx openssl
 # Below is default config file of nginx with FastCGI enabled and index.php served
 COPY default /etc/nginx/sites-available/
 
+# Generate certificate and key
+RUN mkdir -p /etc/nginx/ssl
+RUN openssl	req -x509 -nodes \
+						-keyout /etc/nginx/ssl/inception.key \
+						-out /etc/nginx/ssl/inception.crt \
+						-subj "/C=DE/ST=BW/L=HN/O=42HN/OU=student/CN=${DOMAIN_NAME}"
+
 # Run nginx in foreground process mode instead of deamon
 # so that the container execution won't end and exit
 CMD ["nginx", "-g", "daemon off;"]

@@ -1,16 +1,23 @@
 server {
-	listen 80 default_server;
-	listen [::]:80 default_server;
+	# Port info
+	listen 443 ssl;
+	listen [::]:443 ssl;
 	
+	# SSL info
+	ssl_certificate /etc/nginx/ssl/inception.crt;
+	ssl_certificate_key /etc/nginx/ssl/inception.key;
+	ssl_protocols TLSv1.3;
+	
+	# Where and what to serve
 	root /var/www/html;
 	index index.php index.html index.htm index.nginx-debian.html;
 	
-	server_name _;
-	
+	# `location <reg exp> { action }
 	location / {
 		try_files $uri $uri/ =404;
 	}
 	
+	# Handle php requests using PHP interpreter (php-fpm) of `wordpress` container
 	location ~ \.php$ {
 		include snippets/fastcgi-php.conf;
 		
