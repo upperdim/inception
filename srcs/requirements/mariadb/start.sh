@@ -18,7 +18,7 @@ until mysqladmin ping --silent; do
 done
 
 echo "Creating database..."
-mysql -uroot -ppass < "$INIT_FILE"
+mysql -uroot -p"$MARIADB_ROOT_PW" < "$INIT_FILE"
 echo "Database created."
 
 # Mount db into its own volume
